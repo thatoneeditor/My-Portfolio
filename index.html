@@ -4,54 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Laserbeamedits Portfolio</title>
+
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 body { color: white; min-height: 100vh; background: #000; overflow-x: hidden; }
 
-/* Background Video */
+/* Background Video Settings */
 #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-#bg-video iframe { width: 100vw; height: 100vh; object-fit: cover; transform: scale(1.2); }
-.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: -1; }
+#bg-video iframe { width: 100vw; height: 100vh; object-fit: cover; transform: scale(1.1); }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: -1; }
 
-@keyframes canvaRise { 0% { opacity: 0; transform: translateY(50px); } 100% { opacity: 1; transform: translateY(0); } }
+/* The Slide-up Animation */
+@keyframes canvaRise { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
 
-/* THE BIG PANEL - Made it beefier */
 .panel {
-  width: 95%; max-width: 1200px; 
-  margin: 100px auto; /* More space at top/bottom */
-  padding: 80px 60px; /* Huge internal padding for that "long" look */
-  background: rgba(10, 10, 10, 0.9); 
-  border-radius: 30px;
-  backdrop-filter: blur(20px); 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: canvaRise 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  width: 90%; max-width: 1100px; margin: 50px auto; padding: 45px;
+  background: rgba(15, 15, 15, 0.85); border-radius: 20px;
+  backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: canvaRise 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Bigger Typography */
-h1 { font-size: 64px; margin-bottom: 20px; color: #ff4d4d; letter-spacing: -2px; }
-.hero-text { font-size: 24px; color: #eee; line-height: 1.6; margin-bottom: 50px; max-width: 800px; }
-.highlight { color: #ff4d4d; font-weight: bold; }
+h1 { font-size: 48px; margin-bottom: 10px; }
+.hero-text { font-size: 20px; color: #fff; line-height: 1.5; margin-bottom: 25px; }
+h2 { font-size: 28px; margin-top: 40px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+p, li { font-size: 18px; line-height: 1.6; color: #ccc; }
+ul { margin-left: 20px; }
 
-h2 { font-size: 36px; margin-top: 80px; margin-bottom: 30px; border-bottom: 2px solid rgba(255,77,77,0.3); padding-bottom: 15px; }
-p, li { font-size: 20px; line-height: 1.8; color: #ccc; }
-ul { margin-left: 30px; margin-bottom: 40px; }
-li { margin-bottom: 15px; }
+/* Clean Video Grid (No Buttons) */
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 25px; }
+.project { background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+.project iframe { width: 100%; aspect-ratio: 16/9; border-radius: 10px; border: none; }
 
-/* Spaced out Video Grid */
-.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 40px; }
-.project { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-.project iframe { width: 100%; aspect-ratio: 16/9; border-radius: 15px; border: none; }
-
-/* Contact Section */
-.contact-box { background: rgba(255,77,77,0.05); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,77,77,0.2); margin-top: 50px; }
-.contact-box p { margin-bottom: 10px; font-size: 22px; }
-.contact-box strong { color: #ff4d4d; }
+.contact-box { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-top: 20px; }
 </style>
 </head>
 
 <body>
+
 <div id="bg-video">
   <iframe src="https://www.youtube.com/embed/dJFk3o80Mo8?autoplay=1&mute=1&loop=1&playlist=dJFk3o80Mo8&controls=0&modestbranding=1" allow="autoplay"></iframe>
 </div>
@@ -59,32 +50,38 @@ li { margin-bottom: 15px; }
 
 <div class="panel">
   <h1>Laserbeamedits</h1>
- <p class="hero-text">
-  I’m a video editor and content creator with <span class="highlight">4 years of deep experience</span> in CapCut, mastering every detail the software offers. 
-  I’ve monetized my skills, developed a distinct editing style, and focus on pacing, creative effects, and visuals that keep audiences engaged. 
-  While I specialize in short-form content, I can also deliver high-quality long-form videos when needed.
-</p>
+  <p class="hero-text">
+    <strong>Turning scrollers into fans with high-retention, high-energy edits designed to dominate the algorithm.</strong> 
+    With 4 years of experience mastering pacing and visual storytelling in CapCut, I engineer engagement that keeps eyes glued to the screen.
+  </p>
 
-  <h2>Editing Samples</h2>
+  <h2>My Editing Samples</h2>
   <div class="projects">
-    <div class="project"><iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe></div>
+    <div class="project">
+      <iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe>
+    </div>
+    <div class="project">
+      <iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe>
+    </div>
+    <div class="project">
+      <iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe>
+    </div>
   </div>
 
-  <h2>Skills & Mastery</h2>
+  <h2>Skills & Experience</h2>
   <ul>
-    <li><span class="highlight">4 Years</span> CapCut & Creative Workflow</li>
-    <li>Algorithm-Optimized Pacing for High Retention</li>
-    <li>Visual Effects & Professional Seamless Transitions</li>
-    <li>Short-form (TikTok/Reels) & YouTube Long-form Content</li>
+    <li>4 Years CapCut Mastery</li>
+    <li>Algorithm-Optimized Pacing</li>
+    <li>Visual Effects & Seamless Transitions</li>
+    <li>Short-form & YouTube Content</li>
   </ul>
 
-  <h2>Get In Touch</h2>
+  <h2>Contact</h2>
   <div class="contact-box">
     <p><strong>Discord:</strong> TotallyNotAthar</p>
     <p><strong>YouTube:</strong> Laserbeamedits</p>
   </div>
 </div>
+
 </body>
 </html>
