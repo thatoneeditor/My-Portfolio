@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laserbeamedits | Professional Video Editor</title>
-
+<title>Laserbeamedits | Portfolio</title>
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
 
 body {
   color: white;
@@ -19,221 +18,192 @@ body {
 /* Background Video */
 #bg-video {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; width: 100%; height: 100%;
   z-index: -2;
 }
 #bg-video iframe {
-  width: 100vw;
-  height: 100vh;
+  width: 100vw; height: 100vh;
   object-fit: cover;
   transform: scale(1.1);
   pointer-events: none;
 }
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%);
   z-index: -1;
 }
 
-/* Animation */
-@keyframes rise {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Pulse Animation for the Glow */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
+  100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
 }
 
 /* Main Panel */
 .panel {
   width: 95%;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 40px;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 50px 40px;
   background: rgba(10, 10, 10, 0.25);
-  border-radius: 28px;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.15);
-  animation: rise 1s ease-out forwards;
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  animation: glowPulse 4s infinite ease-in-out;
 }
 
 /* Header */
-.header-area {
-    text-align: center;
-    margin-bottom: 50px;
-}
+.header-area { text-align: center; margin-bottom: 60px; }
 h1 {
-  font-size: clamp(32px, 5vw, 56px);
-  letter-spacing: -1px;
-  margin-bottom: 15px;
-  background: linear-gradient(90deg, #fff, #a855f7);
+  font-size: clamp(40px, 6vw, 70px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  background: linear-gradient(to bottom, #fff 30%, #a855f7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
 }
 .hero-text {
   font-size: 18px;
   line-height: 1.8;
-  max-width: 750px;
-  margin: 0 auto;
-  color: #fff;
+  max-width: 800px;
+  margin: 20px auto;
+  color: #efeff1;
 }
-.highlight {
-  color: #a855f7;
-  font-weight: 600;
-}
+.highlight { color: #a855f7; font-weight: 700; text-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
 
+/* Laser Divider */
 h2 {
-  font-size: 26px;
-  margin-top: 60px;
-  margin-bottom: 25px;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 70px 0 30px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 h2::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: rgba(255,255,255,0.2);
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #a855f7, transparent);
 }
 
-/* Projects */
+/* Projects Grid */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 .project {
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.1);
   background: #000;
-  transition: 0.3s;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .project:hover {
-  transform: translateY(-5px);
-  border-color: rgba(168, 85, 247, 0.6);
+  transform: scale(1.03);
+  border-color: #a855f7;
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
 }
-.project iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-  border: none;
-}
+.project iframe { width: 100%; aspect-ratio: 16/9; border: none; }
 
-/* Services */
+/* Service Cards */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 .service-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 30px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 35px;
   transition: 0.3s;
 }
 .service-card:hover {
-  background: rgba(168,85,247,0.1);
+  background: rgba(168, 85, 247, 0.1);
   border-color: #a855f7;
+  transform: translateY(-5px);
 }
-.card-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.card-text {
-  font-size: 15px;
-  color: #ddd;
-  line-height: 1.6;
-}
+.card-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; color: #fff; }
+.card-text { font-size: 15px; color: #b4b4b4; line-height: 1.6; }
 
-/* Contact */
+/* Contact Box */
 .contact-box {
-  background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(0,0,0,0.4));
-  padding: 40px;
-  border-radius: 20px;
-  margin-top: 30px;
-  border: 1px solid rgba(168,85,247,0.3);
+  background: linear-gradient(145deg, rgba(168,85,247,0.15), rgba(0,0,0,0.6));
+  padding: 50px;
+  border-radius: 25px;
+  margin-top: 40px;
+  border: 1px solid rgba(168,85,247,0.4);
   text-align: center;
-}
-.contact-box p {
-  font-size: 20px;
-  margin: 10px 0;
 }
 .contact-highlight {
   background: #a855f7;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-family: monospace;
+  padding: 6px 15px;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
 }
 
 @media (max-width: 600px) {
-  .panel { padding: 20px; }
-  h1 { font-size: 32px; }
+  .panel { padding: 30px 20px; margin: 20px auto; }
+  h1 { font-size: 38px; }
 }
 </style>
 </head>
-
 <body>
 
 <div id="bg-video">
-  <iframe src="https://www.youtube.com/embed/dJFk3o80Mo8?autoplay=1&mute=1&loop=1&playlist=dJFk3o80Mo8&controls=0"></iframe>
+  <iframe src="https://www.youtube.com/embed/dJFk3o80Mo8?autoplay=1&mute=1&loop=1&playlist=dJFk3o80Mo8&controls=0&modestbranding=1"></iframe>
 </div>
-
 <div class="overlay"></div>
 
 <div class="panel">
   <div class="header-area">
     <h1>LASERBEAMEDITS</h1>
-
     <p class="hero-text">
-      Video Editor & Content Strategist with <span class="highlight">4+ years of experience</span>, primarily using CapCut and tools like ElevenLabs for voice and audio enhancement.
-      <br><br>
-      I’m adaptable across a wide range of content styles—from gaming and short-form clips to longer, story-driven videos.
-      <br><br>
-      My focus is on high-retention editing through strong pacing, smooth transitions, and clear, engaging sound design.
-      <br><br>
-      I aim to turn raw footage into content that feels polished, dynamic, and easy to watch—while staying aligned with the creator’s vision.
+      Video Editor & Content Strategist with <span class="highlight">4+ Years of Deep Experience</span>. 
+      Master of CapCut and audio-enhancement tools, focused on creating content that doesn't just look good—it <span class="highlight">converts attention</span>.
     </p>
-
   </div>
 
-  <h2>Featured Work</h2>
+  <h2>Showcase</h2>
   <div class="projects">
-    <div class="project"><iframe src="https://www.youtube.com/embed/HIlOMdug2IU"></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/R5bJQIdRxr0"></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/GsX6hRDKa08"></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/eP7eREwwEn8"></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/MlfmOWY1yCc"></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/ApineMsgmV4"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/HIlOMdug2IU" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/R5bJQIdRxr0" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/GsX6hRDKa08" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe></div>
   </div>
 
-  <h2>Services & Expertise</h2>
+  <h2>The Arsenal</h2>
   <div class="services-grid">
     <div class="service-card">
-      <div class="card-title">Retention-Focused Editing</div>
-      <div class="card-text">Specializing in Shorts, Reels, and TikToks with fast pacing and engaging structure.</div>
+      <div class="card-title">Retention Hacking</div>
+      <div class="card-text">Specializing in high-energy Shorts and TikToks. I edit for the algorithm to keep eyes on the screen.</div>
     </div>
     <div class="service-card">
-      <div class="card-title">Professional Visuals</div>
-      <div class="card-text">Clean transitions, captions, and color correction for a polished look.</div>
+      <div class="card-title">Motion & FX</div>
+      <div class="card-text">Clean, modern transitions and visual polish that separates the pros from the amateurs.</div>
     </div>
     <div class="service-card">
-      <div class="card-title">Sound Design</div>
-      <div class="card-text">Using sound effects and timing to enhance impact and viewer experience.</div>
+      <div class="card-title">Sonic Depth</div>
+      <div class="card-text">Custom sound design and ElevenLabs integration for immersive audio experiences.</div>
     </div>
   </div>
 
-  <h2>Work With Me</h2>
+  <h2>Start the Project</h2>
   <div class="contact-box">
-    <p>Available for freelance projects and long-term partnerships.</p>
+    <p style="margin-bottom: 20px; color: #ccc;">Available for long-term creator partnerships and unique commissions.</p>
     <p>Discord: <span class="contact-highlight">TotallyNotAthar</span></p>
-    <p>YouTube: <span class="contact-highlight">Laserbeamedits</span></p>
+    <p style="margin-top: 15px;">YouTube: <span class="contact-highlight">Laserbeamedits</span></p>
   </div>
 </div>
 
