@@ -1,265 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laserbeamedits | Professional Video Editor</title>
-
-<link rel="icon" type="image/png" href="logo.png">
-
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-
-body {
-  color: white;
-  background: #000;
-  overflow-x: hidden;
-}
-
-/* Background Video */
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-}
-#bg-video iframe {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  transform: scale(1.1);
-  pointer-events: none;
-}
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9));
-  z-index: -1;
-}
-
-/* Animation */
-@keyframes rise {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Main Panel */
-.panel {
-  width: 95%;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 40px;
-  background: rgba(10, 10, 10, 0.85);
-  border-radius: 28px;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.1);
-  animation: rise 1s ease-out forwards;
-}
-
-/* Header Section */
-.header-area {
-    text-align: center;
-    margin-bottom: 50px;
-}
-h1 {
-  font-size: clamp(32px, 5vw, 56px);
-  letter-spacing: -1px;
-  margin-bottom: 15px;
-  background: linear-gradient(90deg, #fff, #00ffe0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.hero-text {
-  font-size: 19px;
-  line-height: 1.7;
-  max-width: 800px;
-  margin: 0 auto 20px auto;
-  color: #ccc;
-}
-.highlight {
-  color: #00ffe0;
-  font-weight: 600;
-}
-
-h2 {
-  font-size: 26px;
-  margin-top: 60px;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-h2::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: rgba(255,255,255,0.1);
-}
-
-/* Projects Grid - Optimized for 6 Videos */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-}
-.project {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: #050505;
-  transition: transform 0.3s ease;
-}
-.project:hover {
-    transform: translateY(-5px);
-    border-color: rgba(0, 255, 224, 0.4);
-}
-.project iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-  border: none;
-  display: block;
-}
-.video-label {
-    padding: 12px;
-    font-size: 14px;
-    color: #888;
-    background: #0a0a0a;
-    font-weight: 500;
-}
-
-/* SERVICE CARDS */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-.service-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 30px;
-  transition: all 0.3s ease;
-}
-.service-card:hover {
-  background: rgba(0, 255, 224, 0.03);
-  border-color: #00ffe0;
-}
-.card-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 12px;
-}
-.card-text {
-  font-size: 15px;
-  color: #aaa;
-  line-height: 1.6;
-}
-
-/* Contact */
-.contact-box {
-  background: linear-gradient(135deg, rgba(0, 255, 224, 0.1), rgba(0, 0, 0, 0));
-  padding: 40px;
-  border-radius: 20px;
-  margin-top: 30px;
-  border: 1px solid rgba(0, 255, 224, 0.2);
-  text-align: center;
-}
-.contact-box p {
-    font-size: 20px;
-    margin: 10px 0;
-}
-.contact-highlight {
-    color: #00ffe0;
-    font-family: monospace;
-    background: rgba(0,0,0,0.3);
-    padding: 4px 10px;
-    border-radius: 6px;
-}
-
-@media (max-width: 600px) {
-    .panel { padding: 20px; margin: 15px auto; }
-    h1 { font-size: 32px; }
-}
-</style>
-</head>
-
-<body>
-
-<div id="bg-video">
-  <iframe src="https://www.youtube.com/embed/dJFk3o80Mo8?autoplay=1&mute=1&loop=1&playlist=dJFk3o80Mo8&controls=0&modestbranding=1"></iframe>
-</div>
-<div class="overlay"></div>
-
-<div class="panel">
-  <div class="header-area">
-    <h1>LASERBEAMEDITS</h1>
-    <p class="hero-text">
-      Video Editor & Content Strategist with <span class="highlight">4 years of deep experience</span> in CapCut. 
-      I specialize in high-retention pacing, smooth transitions, and sound design that keeps viewers hooked from start to finish.
-    </p>
-  </div>
-
-  <h2>Featured Work</h2>
+<h2>Featured Work</h2>
   <div class="projects">
     <div class="project">
         <iframe src="https://www.youtube.com/embed/HIlOMdug2IU" allowfullscreen></iframe>
-        <div class="video-label">High-Retention Short #1</div>
+        <div class="video-label">Editing Sample #1</div>
     </div>
     <div class="project">
         <iframe src="https://www.youtube.com/embed/R5bJQIdRxr0" allowfullscreen></iframe>
-        <div class="video-label">High-Retention Short #2</div>
+        <div class="video-label">Editing Sample #2</div>
     </div>
     <div class="project">
         <iframe src="https://www.youtube.com/embed/GsX6hRDKa08" allowfullscreen></iframe>
-        <div class="video-label">Motion & Effects Demo</div>
+        <div class="video-label">Editing Sample #3</div>
     </div>
     
     <div class="project">
         <iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe>
-        <div class="video-label">Pacing & Flow Study</div>
+        <div class="video-label">Editing Sample #4</div>
     </div>
     <div class="project">
         <iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe>
-        <div class="video-label">Visual Polish Demo</div>
+        <div class="video-label">Editing Sample #5</div>
     </div>
     <div class="project">
         <iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe>
-        <div class="video-label">Creative Sound Design</div>
+        <div class="video-label">Editing Sample #6</div>
     </div>
   </div>
-
-  <h2>Services & Expertise</h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="card-title">Retention-Focused Editing</div>
-      <div class="card-text">Specializing in Shorts, Reels, and TikToks. I use fast cuts and strategic zooms to maximize watch time and engagement.</div>
-    </div>
-
-    <div class="service-card">
-      <div class="card-title">Professional Visuals</div>
-      <div class="card-text">Modern transitions, punchy captions, and clean color correction to give your content a professional "big creator" feel.</div>
-    </div>
-
-    <div class="service-card">
-      <div class="card-title">Advanced Sound Design</div>
-      <div class="card-text">Using SFX, rhythmic cutting, and audio leveling to ensure your videos sound as good as they look.</div>
-    </div>
-  </div>
-
-  <h2>Work With Me</h2>
-  <div class="contact-box">
-    <p>Available for freelance projects and long-term partnerships.</p>
-    <p>Discord: <span class="contact-highlight">TotallyNotAthar</span></p>
-    <p>YouTube: <span class="contact-highlight">Laserbeamedits</span></p>
-  </div>
-</div>
-
-</body>
-</html>
