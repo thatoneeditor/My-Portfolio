@@ -70,7 +70,7 @@ h1 {
   font-size: clamp(32px, 5vw, 56px);
   letter-spacing: -1px;
   margin-bottom: 15px;
-  background: linear-gradient(90deg, #fff, #00ffe0);
+  background: linear-gradient(90deg, #fff, #a855f7); /* Purple Gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -82,7 +82,7 @@ h1 {
   color: #ccc;
 }
 .highlight {
-  color: #00ffe0;
+  color: #a855f7; /* Purple */
   font-weight: 600;
 }
 
@@ -101,7 +101,7 @@ h2::after {
     background: rgba(255,255,255,0.1);
 }
 
-/* Projects Grid - Optimized for 6 Videos */
+/* Projects Grid */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -117,20 +117,13 @@ h2::after {
 }
 .project:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 255, 224, 0.4);
+    border-color: rgba(168, 85, 247, 0.4); /* Purple Border */
 }
 .project iframe {
   width: 100%;
   aspect-ratio: 16/9;
   border: none;
   display: block;
-}
-.video-label {
-    padding: 12px;
-    font-size: 14px;
-    color: #888;
-    background: #0a0a0a;
-    font-weight: 500;
 }
 
 /* SERVICE CARDS */
@@ -147,8 +140,8 @@ h2::after {
   transition: all 0.3s ease;
 }
 .service-card:hover {
-  background: rgba(0, 255, 224, 0.03);
-  border-color: #00ffe0;
+  background: rgba(168, 85, 247, 0.03); /* Purple Tint */
+  border-color: #a855f7;
 }
 .card-title {
   font-size: 20px;
@@ -164,11 +157,11 @@ h2::after {
 
 /* Contact */
 .contact-box {
-  background: linear-gradient(135deg, rgba(0, 255, 224, 0.1), rgba(0, 0, 0, 0));
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(0, 0, 0, 0));
   padding: 40px;
   border-radius: 20px;
   margin-top: 30px;
-  border: 1px solid rgba(0, 255, 224, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.2);
   text-align: center;
 }
 .contact-box p {
@@ -176,7 +169,7 @@ h2::after {
     margin: 10px 0;
 }
 .contact-highlight {
-    color: #00ffe0;
+    color: #a855f7;
     font-family: monospace;
     background: rgba(0,0,0,0.3);
     padding: 4px 10px;
@@ -210,28 +203,21 @@ h2::after {
   <div class="projects">
     <div class="project">
         <iframe src="https://www.youtube.com/embed/HIlOMdug2IU" allowfullscreen></iframe>
-
     </div>
     <div class="project">
         <iframe src="https://www.youtube.com/embed/R5bJQIdRxr0" allowfullscreen></iframe>
-        
     </div>
     <div class="project">
         <iframe src="https://www.youtube.com/embed/GsX6hRDKa08" allowfullscreen></iframe>
-     
     </div>
-    
     <div class="project">
         <iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe>
-        
     </div>
     <div class="project">
         <iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe>
-     
     </div>
     <div class="project">
         <iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe>
-        
     </div>
   </div>
 
