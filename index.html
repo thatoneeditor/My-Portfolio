@@ -48,20 +48,20 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Main Panel - Updated to 25% Transparency */
+/* Main Panel */
 .panel {
   width: 95%;
   max-width: 1200px;
   margin: 40px auto;
   padding: 40px;
-  background: rgba(10, 10, 10, 0.25); /* 25% Opacity */
+  background: rgba(10, 10, 10, 0.25);
   border-radius: 28px;
-  backdrop-filter: blur(15px); /* Keeps text readable over video */
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255,255,255,0.15);
   animation: rise 1s ease-out forwards;
 }
 
-/* Header Section */
+/* Header */
 .header-area {
     text-align: center;
     margin-bottom: 50px;
@@ -73,14 +73,13 @@ h1 {
   background: linear-gradient(90deg, #fff, #a855f7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 .hero-text {
-  font-size: 19px;
-  line-height: 1.7;
-  max-width: 800px;
-  margin: 0 auto 20px auto;
-  color: #fff; /* Brightened for transparency contrast */
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 750px;
+  margin: 0 auto;
+  color: #fff;
 }
 .highlight {
   color: #a855f7;
@@ -102,53 +101,50 @@ h2::after {
     background: rgba(255,255,255,0.2);
 }
 
-/* Projects Grid */
+/* Projects */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
 }
 .project {
-  position: relative;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.15);
   background: #000;
-  transition: transform 0.3s ease;
+  transition: 0.3s;
 }
 .project:hover {
-    transform: translateY(-5px);
-    border-color: rgba(168, 85, 247, 0.6);
+  transform: translateY(-5px);
+  border-color: rgba(168, 85, 247, 0.6);
 }
 .project iframe {
   width: 100%;
   aspect-ratio: 16/9;
   border: none;
-  display: block;
 }
 
-/* SERVICE CARDS */
+/* Services */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 .service-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 20px;
   padding: 30px;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 .service-card:hover {
-  background: rgba(168, 85, 247, 0.1);
+  background: rgba(168,85,247,0.1);
   border-color: #a855f7;
 }
 .card-title {
   font-size: 20px;
   font-weight: bold;
-  color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .card-text {
   font-size: 15px;
@@ -158,28 +154,27 @@ h2::after {
 
 /* Contact */
 .contact-box {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(0, 0, 0, 0.4));
+  background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(0,0,0,0.4));
   padding: 40px;
   border-radius: 20px;
   margin-top: 30px;
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  border: 1px solid rgba(168,85,247,0.3);
   text-align: center;
 }
 .contact-box p {
-    font-size: 20px;
-    margin: 10px 0;
+  font-size: 20px;
+  margin: 10px 0;
 }
 .contact-highlight {
-    color: #fff;
-    font-family: monospace;
-    background: #a855f7;
-    padding: 4px 10px;
-    border-radius: 6px;
+  background: #a855f7;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: monospace;
 }
 
 @media (max-width: 600px) {
-    .panel { padding: 20px; margin: 15px auto; }
-    h1 { font-size: 32px; }
+  .panel { padding: 20px; }
+  h1 { font-size: 32px; }
 }
 </style>
 </head>
@@ -187,46 +182,50 @@ h2::after {
 <body>
 
 <div id="bg-video">
-  <iframe src="https://www.youtube.com/embed/dJFk3o80Mo8?autoplay=1&mute=1&loop=1&playlist=dJFk3o80Mo8&controls=0&modestbranding=1"></iframe>
+  <iframe src="https://www.youtube.com/embed/dJFk3o80Mo8?autoplay=1&mute=1&loop=1&playlist=dJFk3o80Mo8&controls=0"></iframe>
 </div>
+
 <div class="overlay"></div>
 
 <div class="panel">
   <div class="header-area">
     <h1>LASERBEAMEDITS</h1>
+
     <p class="hero-text">
-      Video Editor & Content Strategist with<span class="highlight">4 years of deep experience</span> in CapCut. 
-     primarily working with CapCut and tools like ElevenLabs for voice and audio enhancement.
-
-I’m adaptable across a wide range of content styles—from gaming and short-form clips to longer, story-driven videos. My focus is on creating high-retention edits through strong pacing, smooth transitions, and clear, engaging sound design.
-
-I approach each project with attention to flow and audience engagement, aiming to turn raw footage into content that feels polished, dynamic, and easy to watch. Whether the goal is entertainment, storytelling, or consistency, I work to deliver edits that align with the creator’s vision while keeping viewers engaged throughout.
+      Video Editor & Content Strategist with <span class="highlight">4+ years of experience</span>, primarily using CapCut and tools like ElevenLabs for voice and audio enhancement.
+      <br><br>
+      I’m adaptable across a wide range of content styles—from gaming and short-form clips to longer, story-driven videos.
+      <br><br>
+      My focus is on high-retention editing through strong pacing, smooth transitions, and clear, engaging sound design.
+      <br><br>
+      I aim to turn raw footage into content that feels polished, dynamic, and easy to watch—while staying aligned with the creator’s vision.
     </p>
+
   </div>
 
   <h2>Featured Work</h2>
   <div class="projects">
-    <div class="project"><iframe src="https://www.youtube.com/embed/HIlOMdug2IU" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/R5bJQIdRxr0" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/GsX6hRDKa08" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/HIlOMdug2IU"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/R5bJQIdRxr0"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/GsX6hRDKa08"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/eP7eREwwEn8"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/MlfmOWY1yCc"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/ApineMsgmV4"></iframe></div>
   </div>
 
   <h2>Services & Expertise</h2>
   <div class="services-grid">
     <div class="service-card">
       <div class="card-title">Retention-Focused Editing</div>
-      <div class="card-text">Specializing in Shorts, Reels, and TikToks. I use fast cuts and strategic zooms to maximize watch time and engagement.</div>
+      <div class="card-text">Specializing in Shorts, Reels, and TikToks with fast pacing and engaging structure.</div>
     </div>
     <div class="service-card">
       <div class="card-title">Professional Visuals</div>
-      <div class="card-text">Modern transitions, punchy captions, and clean color correction to give your content a professional feel.</div>
+      <div class="card-text">Clean transitions, captions, and color correction for a polished look.</div>
     </div>
     <div class="service-card">
-      <div class="card-title">Advanced Sound Design</div>
-      <div class="card-text">Using SFX and rhythmic cutting to ensure your videos sound as good as they look.</div>
+      <div class="card-title">Sound Design</div>
+      <div class="card-text">Using sound effects and timing to enhance impact and viewer experience.</div>
     </div>
   </div>
 
