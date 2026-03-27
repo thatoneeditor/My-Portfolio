@@ -38,7 +38,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9));
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8));
   z-index: -1;
 }
 
@@ -48,16 +48,16 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Main Panel */
+/* Main Panel - Updated to 25% Transparency */
 .panel {
   width: 95%;
   max-width: 1200px;
   margin: 40px auto;
   padding: 40px;
-  background: rgba(10, 10, 10, 0.85);
+  background: rgba(10, 10, 10, 0.25); /* 25% Opacity */
   border-radius: 28px;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px); /* Keeps text readable over video */
+  border: 1px solid rgba(255,255,255,0.15);
   animation: rise 1s ease-out forwards;
 }
 
@@ -70,19 +70,20 @@ h1 {
   font-size: clamp(32px, 5vw, 56px);
   letter-spacing: -1px;
   margin-bottom: 15px;
-  background: linear-gradient(90deg, #fff, #a855f7); /* Purple Gradient */
+  background: linear-gradient(90deg, #fff, #a855f7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 .hero-text {
   font-size: 19px;
   line-height: 1.7;
   max-width: 800px;
   margin: 0 auto 20px auto;
-  color: #ccc;
+  color: #fff; /* Brightened for transparency contrast */
 }
 .highlight {
-  color: #a855f7; /* Purple */
+  color: #a855f7;
   font-weight: 600;
 }
 
@@ -98,7 +99,7 @@ h2::after {
     content: "";
     flex: 1;
     height: 1px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.2);
 }
 
 /* Projects Grid */
@@ -111,13 +112,13 @@ h2::after {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: #050505;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: #000;
   transition: transform 0.3s ease;
 }
 .project:hover {
     transform: translateY(-5px);
-    border-color: rgba(168, 85, 247, 0.4); /* Purple Border */
+    border-color: rgba(168, 85, 247, 0.6);
 }
 .project iframe {
   width: 100%;
@@ -133,14 +134,14 @@ h2::after {
   gap: 20px;
 }
 .service-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 30px;
   transition: all 0.3s ease;
 }
 .service-card:hover {
-  background: rgba(168, 85, 247, 0.03); /* Purple Tint */
+  background: rgba(168, 85, 247, 0.1);
   border-color: #a855f7;
 }
 .card-title {
@@ -151,17 +152,17 @@ h2::after {
 }
 .card-text {
   font-size: 15px;
-  color: #aaa;
+  color: #ddd;
   line-height: 1.6;
 }
 
 /* Contact */
 .contact-box {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(0, 0, 0, 0));
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(0, 0, 0, 0.4));
   padding: 40px;
   border-radius: 20px;
   margin-top: 30px;
-  border: 1px solid rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.3);
   text-align: center;
 }
 .contact-box p {
@@ -169,9 +170,9 @@ h2::after {
     margin: 10px 0;
 }
 .contact-highlight {
-    color: #a855f7;
+    color: #fff;
     font-family: monospace;
-    background: rgba(0,0,0,0.3);
+    background: #a855f7;
     padding: 4px 10px;
     border-radius: 6px;
 }
@@ -201,24 +202,12 @@ h2::after {
 
   <h2>Featured Work</h2>
   <div class="projects">
-    <div class="project">
-        <iframe src="https://www.youtube.com/embed/HIlOMdug2IU" allowfullscreen></iframe>
-    </div>
-    <div class="project">
-        <iframe src="https://www.youtube.com/embed/R5bJQIdRxr0" allowfullscreen></iframe>
-    </div>
-    <div class="project">
-        <iframe src="https://www.youtube.com/embed/GsX6hRDKa08" allowfullscreen></iframe>
-    </div>
-    <div class="project">
-        <iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe>
-    </div>
-    <div class="project">
-        <iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe>
-    </div>
-    <div class="project">
-        <iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe>
-    </div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/HIlOMdug2IU" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/R5bJQIdRxr0" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/GsX6hRDKa08" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe></div>
   </div>
 
   <h2>Services & Expertise</h2>
@@ -227,15 +216,13 @@ h2::after {
       <div class="card-title">Retention-Focused Editing</div>
       <div class="card-text">Specializing in Shorts, Reels, and TikToks. I use fast cuts and strategic zooms to maximize watch time and engagement.</div>
     </div>
-
     <div class="service-card">
       <div class="card-title">Professional Visuals</div>
-      <div class="card-text">Modern transitions, punchy captions, and clean color correction to give your content a professional "big creator" feel.</div>
+      <div class="card-text">Modern transitions, punchy captions, and clean color correction to give your content a professional feel.</div>
     </div>
-
     <div class="service-card">
       <div class="card-title">Advanced Sound Design</div>
-      <div class="card-text">Using SFX, rhythmic cutting, and audio leveling to ensure your videos sound as good as they look.</div>
+      <div class="card-text">Using SFX and rhythmic cutting to ensure your videos sound as good as they look.</div>
     </div>
   </div>
 
