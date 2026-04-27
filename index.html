@@ -3,42 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laserbeamedits | Portfolio</title>
-<link rel="icon" type="image/png" href="logo.png">
+<title>Fae1 | Portfolio</title>
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
 
 body {
   color: white;
-  background: #000;
+  background: linear-gradient(270deg, #02050a, #071a2f, #02101f);
+  background-size: 400% 400%;
+  animation: bgMove 15s ease infinite;
   overflow-x: hidden;
 }
 
-/* Background Video */
-#bg-video {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  z-index: -2;
-}
-#bg-video iframe {
-  width: 100vw; height: 100vh;
-  object-fit: cover;
-  transform: scale(1.1);
-  pointer-events: none;
-}
-.overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%);
-  z-index: -1;
+/* BACKGROUND ANIMATION */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Pulse Animation for the Glow */
+/* Glow Animation */
 @keyframes glowPulse {
-  0% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
-  50% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
-  100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
+  0% { box-shadow: 0 0 15px rgba(0, 200, 255, 0.2); }
+  50% { box-shadow: 0 0 35px rgba(0, 200, 255, 0.5); }
+  100% { box-shadow: 0 0 15px rgba(0, 200, 255, 0.2); }
 }
 
 /* Main Panel */
@@ -47,35 +36,42 @@ body {
   max-width: 1100px;
   margin: 60px auto;
   padding: 50px 40px;
-  background: rgba(10, 10, 10, 0.25);
+  background: rgba(10, 20, 40, 0.35);
   border-radius: 30px;
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  border: 1px solid rgba(0, 200, 255, 0.3);
   animation: glowPulse 4s infinite ease-in-out;
 }
 
 /* Header */
 .header-area { text-align: center; margin-bottom: 60px; }
+
 h1 {
   font-size: clamp(40px, 6vw, 70px);
   font-weight: 900;
   letter-spacing: -2px;
   text-transform: uppercase;
-  background: linear-gradient(to bottom, #fff 30%, #a855f7 100%);
+  background: linear-gradient(to bottom, #ffffff 30%, #00eaff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.5));
 }
+
 .hero-text {
   font-size: 18px;
   line-height: 1.8;
   max-width: 800px;
   margin: 20px auto;
-  color: #efeff1;
+  color: #d6f6ff;
 }
-.highlight { color: #a855f7; font-weight: 700; text-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
 
-/* Laser Divider */
+.highlight {
+  color: #00eaff;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 200, 255, 0.6);
+}
+
+/* Section Divider */
 h2 {
   font-size: 24px;
   text-transform: uppercase;
@@ -85,39 +81,48 @@ h2 {
   align-items: center;
   gap: 20px;
 }
+
 h2::after {
   content: "";
   flex: 1;
   height: 2px;
-  background: linear-gradient(90deg, #a855f7, transparent);
+  background: linear-gradient(90deg, #00eaff, transparent);
 }
 
-/* Projects Grid */
+/* Projects */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 25px;
 }
+
 .project {
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.08);
   background: #000;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s ease;
 }
+
 .project:hover {
   transform: scale(1.03);
-  border-color: #a855f7;
-  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+  border-color: #00eaff;
+  box-shadow: 0 10px 30px rgba(0, 200, 255, 0.4);
 }
-.project iframe { width: 100%; aspect-ratio: 16/9; border: none; }
 
-/* Service Cards */
+.project iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+}
+
+/* Services */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
+
 .service-card {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.08);
@@ -125,88 +130,92 @@ h2::after {
   padding: 35px;
   transition: 0.3s;
 }
+
 .service-card:hover {
-  background: rgba(168, 85, 247, 0.1);
-  border-color: #a855f7;
+  background: rgba(0, 200, 255, 0.1);
+  border-color: #00eaff;
   transform: translateY(-5px);
 }
-.card-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; color: #fff; }
-.card-text { font-size: 15px; color: #b4b4b4; line-height: 1.6; }
 
-/* Contact Box */
+.card-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.card-text {
+  font-size: 15px;
+  color: #b4d9e6;
+  line-height: 1.6;
+}
+
+/* Contact */
 .contact-box {
-  background: linear-gradient(145deg, rgba(168,85,247,0.15), rgba(0,0,0,0.6));
+  background: linear-gradient(145deg, rgba(0,200,255,0.15), rgba(0,0,0,0.6));
   padding: 50px;
   border-radius: 25px;
   margin-top: 40px;
-  border: 1px solid rgba(168,85,247,0.4);
+  border: 1px solid rgba(0,200,255,0.4);
   text-align: center;
 }
+
 .contact-highlight {
-  background: #a855f7;
+  background: #00eaff;
+  color: black;
   padding: 6px 15px;
   border-radius: 8px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: monospace;
   font-weight: bold;
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
 }
 
+/* Mobile fix */
 @media (max-width: 600px) {
   .panel { padding: 30px 20px; margin: 20px auto; }
   h1 { font-size: 38px; }
 }
 </style>
 </head>
-<body>
 
-<div id="bg-video">
-  <iframe src="https://www.youtube.com/embed/dJFk3o80Mo8?autoplay=1&mute=1&loop=1&playlist=dJFk3o80Mo8&controls=0&modestbranding=1"></iframe>
-</div>
-<div class="overlay"></div>
+<body>
 
 <div class="panel">
   <div class="header-area">
-    <h1>LASERBEAMEDITS</h1>
+    <h1>FAE1</h1>
     <p class="hero-text">
-      Video Editor & Content Creator with <span class="highlight">4+ Years of Experience</span>. 
-      I approach each project with attention to flow and audience engagement, aiming to turn raw footage into content that feels polished, dynamic, and easy to watch. Whether the goal is entertainment, storytelling, or consistency, I work to deliver edits that align with the creator’s vision while keeping viewers engaged throughout <span class="highlight">The video</span>.
+      I edit <span class="highlight">high-energy gaming shorts</span> and engaging long-form content. 
+      Built for retention — fast cuts, smooth flow, and edits that keep viewers watching from start to finish.
     </p>
   </div>
 
   <h2>Showcase</h2>
   <div class="projects">
-    <div class="project"><iframe src="https://www.youtube.com/embed/HIlOMdug2IU" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/R5bJQIdRxr0" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/GsX6hRDKa08" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/eP7eREwwEn8" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/MlfmOWY1yCc" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/ApineMsgmV4" allowfullscreen></iframe></div>
-   <div class="project"><iframe src="https://www.youtube.com/embed/hzlXhv9LQ_k" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/YRpwwviGpBM" allowfullscreen></iframe></div>
-    <div class="project"><iframe src="https://www.youtube.com/embed/7cuYyMb1eI0" allowfullscreen></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/AA5UPQoUN3Y"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/5604RP3bQWI"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/d6CJXejZRow"></iframe></div>
+    <div class="project"><iframe src="https://www.youtube.com/embed/C-K4ROctDAU"></iframe></div>
   </div>
 
   <h2>More about me</h2>
   <div class="services-grid">
     <div class="service-card">
       <div class="card-title">High Retention Editing</div>
-      <div class="card-text">Built to keep viewers watching. I focus on fast pacing, strong hooks, and smooth flow to maximize watch time across Shorts, TikTok, and YouTube content.</div>
+      <div class="card-text">Fast-paced editing built to hook viewers instantly and keep them watching.</div>
     </div>
     <div class="service-card">
-      <div class="card-title">Transitions And Effects</div>
-      <div class="card-text">Clean transitions and refined motion that enhance your content without distracting from it.</div>
+      <div class="card-title">Clean Transitions</div>
+      <div class="card-text">Smooth and professional transitions that elevate your content.</div>
     </div>
     <div class="service-card">
-      <div class="card-title">Sound & Voice Enhancement</div>
-      <div class="card-text">Using sound design and tools like ElevenLabs to add clarity, impact, and immersion—making your content feel more engaging and complete</div>
+      <div class="card-title">Sound Design</div>
+      <div class="card-text">Audio that hits — making your edits more immersive and engaging.</div>
     </div>
   </div>
 
   <h2>Contact Me!</h2>
   <div class="contact-box">
-    <p style="margin-bottom: 20px; color: #ccc;">Available for long-term creator partnerships and unique commissions.</p>
-    <p>Discord: <span class="contact-highlight">TotallyNotAthar :D</span></p>
-    <p style="margin-top: 15px;">YouTube: <span class="contact-highlight">Laserbeamedits</span></p>
+    <p style="margin-bottom: 20px; color: #ccc;">Available for work and collaborations.</p>
+    <p>Discord: <span class="contact-highlight">PUT_HIS_DISCORD_HERE</span></p>
   </div>
 </div>
 
