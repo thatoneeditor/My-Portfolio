@@ -233,13 +233,12 @@ window.PROJECTS = [
   // Build the YouTube player for a project: the iframe is created and inserted when the project is selected.
   function video(project, vertical) {
     const box = el("div", "video" + (vertical ? " vertical" : ""));
-    if (!/^[\w-]{6,20}$/.test(project.youtube || "")) {
+    if (!project.youtube) {
       box.classList.add("empty");
       box.appendChild(el("span", "", "Video coming soon"));
       return box;
     }
-    const f = document.createElement("iframe");
-    const embedURL = `https://www.youtube.com/embed/${project.youtube}`;
+    f.src = project.youtube;
     f.src = embedURL;
     f.title = project.title;
     f.loading = "lazy";
