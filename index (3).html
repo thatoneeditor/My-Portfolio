@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LASERBEAMEDITS | Video Editor for YouTube Shorts & Talking Head Shorts</title>
+<meta name="description" content="LASERBEAMEDITS is a video editor and content creator making retention-focused edits for YouTube Shorts and talking head shorts.">
+<meta property="og:title" content="LASERBEAMEDITS | Video Editor">
+<meta property="og:description" content="Retention-focused editing for YouTube Shorts and talking head shorts.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0a0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0c;--panel:#141418;--line:#26262d;--text:#ece8e1;--mute:#a0a0ab;--beam:#ff2f7d;--r:6px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Syne,Manrope,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--beam);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:var(--text);color:var(--bg);padding:.5rem 1rem;z-index:30}
+.beam-progress{position:fixed;inset:0 0 auto;height:2px;background:var(--beam);transform:scaleX(0);transform-origin:left;z-index:20;box-shadow:0 0 12px var(--beam)}
+
+.top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.25rem;background:rgba(10,10,12,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font:800 1rem Syne,sans-serif;text-decoration:none;letter-spacing:.02em}
+.menu-btn{background:none;border:1px solid var(--line);color:var(--text);padding:.45rem .9rem;border-radius:var(--r);font:inherit;cursor:pointer}
+nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:.5rem 1.25rem 1rem}
+nav.open{display:flex}
+nav a{padding:.6rem 0;text-decoration:none;color:var(--mute)}nav a:hover{color:var(--text)}
+
+main{overflow-x:clip}
+.hero{padding:4rem 1.25rem 3rem;max-width:1100px;margin:0 auto}
+.hero h1{font-size:clamp(1.6rem,8vw,6.5rem);font-weight:800;letter-spacing:-.02em;overflow-wrap:anywhere}
+.headline{font:700 clamp(1.3rem,4vw,2rem)/1.2 Syne,sans-serif;margin:1.25rem 0 .75rem;color:var(--beam)}
+.intro{max-width:60ch;color:var(--mute);margin:0 0 1.75rem}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border:1px solid var(--line);border-radius:var(--r);text-decoration:none;font-weight:600;background:transparent;color:var(--text);cursor:pointer;font-family:inherit;font-size:1rem;transition:border-color .2s,background .2s}
+.btn:hover{border-color:var(--beam)}
+.btn.primary{background:var(--beam);border-color:var(--beam);color:#12060b}.btn.primary:hover{background:#ff5496}
+.btn.small{padding:.4rem .9rem;font-size:.9rem}
+
+/* Hero visual: an edit timeline with a laser playhead cutting through it */
+.timeline{position:relative;margin-top:3rem;padding:1rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);display:grid;gap:.5rem;overflow:hidden}
+.track{display:flex;gap:4px;height:34px}
+.track i{flex:0 0 var(--w);background:#2b2b34;border-radius:3px}
+.track:nth-child(2) i{background:#33333d}
+.track.audio i{background:repeating-linear-gradient(90deg,#3a3a46 0 3px,#24242c 3px 6px);height:100%}
+.playhead{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--beam);box-shadow:0 0 16px 2px var(--beam);animation:sweep 6s linear infinite}
+@keyframes sweep{from{left:0}to{left:100%}}
+.timeline{cursor:ew-resize}
+.track i{transition:background .2s}
+.track:not(.audio) i:hover{background:var(--beam)}
+
+.sec{max-width:1100px;margin:0 auto;padding:4rem 1.25rem;border-top:1px solid var(--line)}
+.sec.narrow{max-width:720px}
+.sec h2{font-size:clamp(1.6rem,5vw,2.6rem);margin-bottom:1rem}
+.lead{color:var(--mute);margin:0 0 1.5rem}
+
+.reel-frame{position:relative;padding:1.1rem;background:var(--panel);border-radius:var(--r);box-shadow:0 40px 90px -40px var(--beam)}
+.reel-frame::before,.reel-frame::after{content:"";position:absolute;width:28px;height:28px;border:2px solid var(--beam);pointer-events:none}
+.reel-frame::before{top:-6px;left:-6px;border-right:0;border-bottom:0}
+.reel-frame::after{bottom:-6px;right:-6px;border-left:0;border-top:0}
+.reel-frame .video{aspect-ratio:16/9}
+.ruler{position:relative;height:22px;margin-top:.9rem;overflow:hidden;background:repeating-linear-gradient(90deg,#3a3a46 0 1px,transparent 1px 14px) bottom/100% 10px no-repeat,repeating-linear-gradient(90deg,#55555f 0 1px,transparent 1px 70px) bottom/100% 18px no-repeat}
+.ruler .playhead{animation-duration:14s}
+.video{position:relative;background:var(--panel);border-radius:var(--r);overflow:hidden;aspect-ratio:16/9}
+.video.vertical{aspect-ratio:9/16;max-height:480px;margin-inline:auto}
+.video iframe,.video .play{position:absolute;inset:0;width:100%;height:100%;border:0}
+.play{background:#000 center/cover;cursor:pointer;border:0}
+.play::after{content:"";position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px;border-radius:50%;background:var(--beam) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2312060b' d='M9 6.5v11l9-5.5z'/%3E%3C/svg%3E") center/60% no-repeat;transition:transform .2s}
+.play:hover::after{transform:scale(1.1)}
+.video.empty{display:grid;place-items:center;color:var(--mute);border:1px dashed var(--line)}
+
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.chip{background:none;border:1px solid var(--line);color:var(--mute);padding:.5rem 1rem;border-radius:99px;font:inherit;cursor:pointer;transition:all .2s}
+.chip[aria-pressed=true]{border-color:var(--beam);color:var(--text);background:rgba(255,47,125,.12)}
+.work{display:grid;gap:1.5rem}
+.stage{display:grid;place-items:center;min-height:240px;padding:1rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
+.stage .video{width:100%}
+.stage.tall .video{width:auto;height:min(480px,75vh)}
+.info{margin-top:1rem}.info h3{font-size:1.4rem;margin-bottom:.4rem}.info p{margin:0;color:var(--mute)}.info .yt{margin-top:1rem}
+.tag{color:var(--beam)!important;font-weight:600;font-size:.9rem;margin:0 0 .25rem!important}
+.clips{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.clip{display:flex;gap:.9rem;align-items:center;width:100%;text-align:left;padding:.6rem;background:none;border:1px solid var(--line);border-left:3px solid var(--line);border-radius:var(--r);color:var(--text);font:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+.clip:hover{background:var(--panel)}
+.clip[aria-current=true]{border-left-color:var(--beam);background:var(--panel)}
+.thumb{flex:none;width:96px;aspect-ratio:16/9;background:#1e1e25 center/cover;border-radius:3px}
+.thumb.v{width:40px;aspect-ratio:9/16}
+.meta{display:grid;gap:.1rem}.meta small{color:var(--mute)}
+
+.rows,.skills,.contacts{list-style:none;margin:0;padding:0}
+.rows li{padding:1.5rem 0;border-top:1px solid var(--line)}
+.rows h3{font-size:1.3rem;margin-bottom:.4rem}.rows p,.skills p{margin:0;color:var(--mute);max-width:60ch}
+.skills{display:grid;gap:1.75rem}
+.skills li{border-left:2px solid var(--beam);padding-left:1rem}.skills h3{font-size:1.1rem;margin-bottom:.3rem}
+.sec p{max-width:62ch}
+.contacts li{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;padding:1rem 0;border-top:1px solid var(--line)}
+.contacts span{color:var(--mute);min-width:5.5rem}
+.contacts a{color:var(--text);text-underline-offset:4px}.contacts a:hover{color:var(--beam)}
+footer{padding:2rem 1.25rem;text-align:center;color:var(--mute);border-top:1px solid var(--line)}
+
+@media(min-width:760px){
+  .menu-btn{display:none}
+  nav,nav.open{display:flex;position:static;flex-direction:row;gap:1.5rem;padding:0;border:0;background:none}
+  nav a{padding:0}
+  .hero{padding-top:6rem}
+  .work{grid-template-columns:1.5fr 1fr;align-items:start;gap:2rem}
+  .bin{position:sticky;top:5rem}
+  .rows li{display:grid;grid-template-columns:1fr 2fr;gap:2rem}
+  .skills{grid-template-columns:repeat(2,1fr);gap:2rem 3rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.playhead{animation:none;left:60%}*{transition:none!important}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"LASERBEAMEDITS","description":"Video editing for YouTube Shorts and talking head shorts.","sameAs":["https://instagram.com/laserbeamedits"]}</script>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+<div class="beam-progress" id="progress" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="logo" href="#top" aria-label="LASERBEAMEDITS home">LASERBEAMEDITS</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+    <a href="#reel">Showreel</a><a href="#work">Work</a><a href="#services">Services</a><a href="#why">Why me</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <h1>LASERBEAMEDITS</h1>
+  <p class="headline">Edits that keep people watching.</p>
+  <p class="intro">I'm a video editor and content creator. I focus on flow and audience engagement, turning raw footage into content that feels polished, dynamic and easy to watch, while staying true to the creator's vision.</p>
+  <div class="actions">
+    <a class="btn primary" href="#work">View my work</a>
+    <a class="btn" href="#contact">Contact me</a>
+  </div>
+  <div class="timeline" aria-hidden="true">
+    <div class="track"><i style="--w:18%"></i><i style="--w:9%"></i><i style="--w:27%"></i><i style="--w:14%"></i><i style="--w:22%"></i></div>
+    <div class="track"><i style="--w:30%"></i><i style="--w:12%"></i><i style="--w:20%"></i><i style="--w:24%"></i></div>
+    <div class="track audio"><i style="--w:44%"></i><i style="--w:16%"></i><i style="--w:32%"></i></div>
+    <span class="playhead"></span>
+  </div>
+</section>
+
+<section id="reel" class="sec">
+  <h2>Showreel</h2>
+  <p class="lead">A quick look at how I cut. Press play to load the video.</p>
+  <div class="reel-frame"><div id="reelBox"></div><div class="ruler" aria-hidden="true"><span class="playhead"></span></div></div>
+</section>
+
+<section id="work" class="sec">
+  <h2>Selected work</h2>
+  <p class="lead">Pick a project to watch it in the viewer.</p>
+  <div class="work">
+    <div class="viewer"><div class="stage" id="stage"></div><div class="info" id="info" aria-live="polite"></div></div>
+    <div class="bin">
+      <div class="filters" id="filters" role="group" aria-label="Filter projects by category"></div>
+      <ul class="clips" id="clips"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="sec">
+  <h2>What I can do for your channel</h2>
+  <ul class="rows">
+    <li><h3>YouTube Shorts</h3><p>Fast, vertical edits with a hook in the first seconds, tight pacing and captions that are easy to read on a phone.</p></li>
+    <li><h3>Talking head shorts</h3><p>Talking-head footage cut into tight, engaging shorts, with clean audio, clear captions and a reason to keep watching.</p></li>
+  </ul>
+</section>
+
+<section id="why" class="sec">
+  <h2>Why work with me</h2>
+  <ul class="skills">
+    <li><h3>Pacing</h3><p>Cutting dead air so every second earns its place.</p></li>
+    <li><h3>Storytelling</h3><p>Shaping footage into a clear beginning, middle and payoff.</p></li>
+    <li><h3>Captions</h3><p>Readable, well-timed text that helps viewers follow with or without sound.</p></li>
+    <li><h3>Sound design</h3><p>Sound effects, mixing and voice enhancement (including tools like ElevenLabs) for clarity and impact.</p></li>
+    <li><h3>Transitions</h3><p>Clean motion that supports the content instead of distracting from it.</p></li>
+    <li><h3>Retention-focused editing</h3><p>Strong hooks and smooth flow, built to maximize watch time.</p></li>
+  </ul>
+</section>
+
+<section id="about" class="sec narrow">
+  <h2>About</h2>
+  <p>I'm LASERBEAMEDITS, a video editor with 4+ years of experience. I like editing that feels effortless to watch, and I work closely with creators so the final cut matches their vision and keeps viewers engaged from start to finish.</p>
+  <p>I'm open to long-term creator partnerships and unique commissions.</p>
+</section>
+
+<section id="contact" class="sec">
+  <h2>Let's work together</h2>
+  <p class="lead">Tell me about your channel and what you need edited.</p>
+  <ul class="contacts">
+    <li><span>Discord</span> <strong>LASERBEAM</strong> <button class="btn small" id="copyDiscord" type="button">Copy username</button></li>
+    <li><span>Instagram</span> <a href="https://instagram.com/laserbeamedits" target="_blank" rel="noopener">@Laserbeamedits</a></li>
+    <!-- TODO: replace with your real email -->
+    <li><span>Email</span> <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+  </ul>
+</section>
+</main>
+
+<footer><p>&copy; <span id="year"></span> LASERBEAMEDITS</p></footer>
+<script>
+// ===== EDIT THIS FILE to update your site =====
+
+window.SITE = {
+  // YouTube video ID of your showreel (the part after "v=" in the URL). Leave "" to show a placeholder.
+  showreel: ""
+};
+
+// To add a project, copy one line and fill it in.
+// category: "shorts" | "talking" | "relevant"   (description is optional)
+// youtube:  the video ID (after "v=" or "/shorts/"). Leave "" for a placeholder.
+window.PROJECTS = [
+  { title: "Shorts edit 1", category: "shorts", description: "", youtube: "EuJjs2Jqbe0" },
+  { title: "Shorts edit 2", category: "shorts", description: "", youtube: "hzlXhv9LQ_k" },
+  { title: "Talking head short 1", category: "talking", description: "", youtube: "YRpwwviGpBM" },
+  { title: "Talking head short 2", category: "talking", description: "", youtube: "6vvFswp3vDY" },
+  { title: "Relevant edit 1", category: "relevant", description: "", youtube: "rIHtck2oZYk" },
+  { title: "Relevant edit 2", category: "relevant", description: "", youtube: "ApineMsgmV4" },
+  { title: "Relevant edit 3", category: "relevant", description: "", youtube: "MlfmOWY1yCc" },
+  { title: "Relevant edit 4", category: "relevant", description: "", youtube: "mRrdj-QRsrU" }
+];
+
+(() => {
+  const CATS = { shorts: "Shorts", talking: "Talking Head Shorts", relevant: "Relevant Edits" };
+  const isV = (p) => p.category === "shorts" || p.category === "talking";
+  const $ = (s) => document.querySelector(s);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+
+  // Click-to-load video: keeps the page light until someone presses play.
+  function video(id, title, vertical) {
+    const box = el("div", "video" + (vertical ? " vertical" : ""));
+    if (!/^[\w-]{6,20}$/.test(id || "")) {
+      box.classList.add("empty");
+      box.appendChild(el("span", "", "Video coming soon"));
+      return box;
+    }
+    const btn = el("button", "play");
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Play video: " + title);
+    btn.style.backgroundImage = "url(https://i.ytimg.com/vi/" + id + "/hqdefault.jpg)";
+    btn.addEventListener("click", () => {
+      const f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+      f.title = title;
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      box.replaceChildren(f);
+    });
+    box.appendChild(btn);
+    return box;
+  }
+
+  $("#reelBox").appendChild(video((window.SITE || {}).showreel, "LASERBEAMEDITS showreel"));
+
+  const projects = window.PROJECTS || [];
+  const filters = $("#filters"), clips = $("#clips"), stage = $("#stage"), info = $("#info");
+  let active = "all";
+
+  // Load one project into the viewer
+  function show(p) {
+    stage.classList.toggle("tall", isV(p));
+    stage.replaceChildren(video(p.youtube, p.title, isV(p)));
+    const parts = [el("p", "tag", CATS[p.category] || p.category), el("h3", "", p.title)];
+    if (p.description) parts.push(el("p", "", p.description));
+    if (/^[\w-]{6,20}$/.test(p.youtube || "")) {
+      const a = el("a", "btn small yt", "Watch on YouTube \u2197");
+      a.href = "https://www.youtube.com/" + (isV(p) ? "shorts/" : "watch?v=") + p.youtube;
+      a.target = "_blank";
+      a.rel = "noopener";
+      parts.push(a);
+    }
+    info.replaceChildren(...parts);
+    clips.querySelectorAll("button").forEach((b) => b.setAttribute("aria-current", String(b.dataset.i === String(projects.indexOf(p)))));
+  }
+
+  // Build the project list for the active filter
+  function render() {
+    clips.replaceChildren();
+    const list = projects.filter((p) => active === "all" || p.category === active);
+    list.forEach((p) => {
+      const li = el("li"), b = el("button", "clip"), th = el("span", "thumb" + (isV(p) ? " v" : "")), meta = el("span", "meta");
+      b.type = "button";
+      b.dataset.i = projects.indexOf(p);
+      if (/^[\w-]{6,20}$/.test(p.youtube || "")) th.style.backgroundImage = "url(https://i.ytimg.com/vi/" + p.youtube + "/mqdefault.jpg)";
+      meta.append(el("strong", "", p.title), el("small", "", CATS[p.category] || p.category));
+      b.append(th, meta);
+      b.addEventListener("click", () => show(p));
+      li.appendChild(b);
+      clips.appendChild(li);
+    });
+    if (list.length) show(list[0]);
+    else { stage.replaceChildren(); info.replaceChildren(el("p", "lead", "No projects in this category yet.")); }
+  }
+
+  [["all", "All"], ...Object.entries(CATS)].forEach(([key, label]) => {
+    const b = el("button", "chip", label);
+    b.type = "button";
+    b.setAttribute("aria-pressed", key === active);
+    b.addEventListener("click", () => {
+      active = key;
+      filters.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+      render();
+    });
+    filters.appendChild(b);
+  });
+  render();
+    });
+    filters.appendChild(b);
+  });
+  render();
+
+  // Hero timeline: move the laser playhead with your pointer, release to resume
+  const tl = document.querySelector(".timeline"), ph = document.querySelector(".playhead");
+  tl.addEventListener("pointermove", (e) => {
+    ph.style.animation = "none";
+    ph.style.left = e.clientX - tl.getBoundingClientRect().left + "px";
+  });
+  tl.addEventListener("pointerleave", () => { ph.style.animation = ""; ph.style.left = ""; });
+
+  // Mobile menu
+  const menuBtn = $("#menuBtn"), nav = $("#nav");
+  menuBtn.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open);
+  });
+  nav.addEventListener("click", (e) => { if (e.target.tagName === "A") { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); } });
+
+  // Scroll progress beam
+  const bar = $("#progress");
+  addEventListener("scroll", () => {
+    const h = document.documentElement;
+    bar.style.transform = "scaleX(" + (h.scrollTop / (h.scrollHeight - h.clientHeight || 1)) + ")";
+  }, { passive: true });
+
+  // Copy Discord username
+  const copy = $("#copyDiscord");
+  copy.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText("LASERBEAM"); copy.textContent = "Copied"; }
+    catch { copy.textContent = "Username: LASERBEAM"; }
+    setTimeout(() => (copy.textContent = "Copy username"), 2000);
+  });
+
+  $("#year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
